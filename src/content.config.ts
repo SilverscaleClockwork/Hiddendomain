@@ -10,8 +10,9 @@ export const BlogSchema = z.object({
     title: z.string(),
     content: z.string(),
     // date_updated: z.string().transform((str) => new Date(str)),
-    date_updated: z.coerce.date(),
-    seo_text: z.union([z.string(), z.record(z.string(), z.any())]).nullable(),
+    date_created: z.coerce.date(),
+    date_updated: z.coerce.date().nullable(),
+    seo_text: z.string().nullable(),
   });
 
 export type BlogPost = z.infer<typeof BlogSchema>

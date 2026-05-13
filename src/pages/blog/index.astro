@@ -23,7 +23,7 @@ const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
             .filter(post => post.data.status === 'published')
             .map((post) => (
                 <li>                    
-                    <span>{dateTimeFormat.format(post.data.date_updated)}</span> 
+                    <span>{dateTimeFormat.format(post.data.date_updated ?? post.data.date_created)}</span> 
                     &mdash; 
                     <a href={`/blog/${post.id}`}>
                         <strong>{post.data.title}</strong>

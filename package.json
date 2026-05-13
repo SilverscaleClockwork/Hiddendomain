@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.18",
     "@directus/sdk": "^21.3.0",
     "astro": "^6.3.1",
     "marked": "^18.0.3"
