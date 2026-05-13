@@ -22,10 +22,9 @@ const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
 const htmlContent = await marked(post.data.content);
 ---
 
-<BaseLayout>
+<BaseLayout description={post.data.seo_text || post.data.content}>
   <a href="/blog">Back</a>
-  <br />
-  <sub>Written {dateTimeFormat.format(post.data.date_updated)}</sub>
+  <small>Written {dateTimeFormat.format(post.data.date_updated)}</small>
   
   <h1>{post.data.title}</h1>
   <article set:html={htmlContent} />

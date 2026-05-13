@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Hiddendomain - The Human side of the Internet.">
+<BaseLayout title="Hiddendomain - The Human side of the Internet." description="Tired of generative systems in the internet. This page is 100% Human made with technical and private intent. Just to show that it's possible.">
 	<h1>Hiddendomain</h1>
 	<p>
 		The small page between the seam. Human made with intent.
@@ -14,7 +14,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		<ul>
 			<li>
 				<a href="/blog">Blog</a>
+				<small>Find actual blog posts that are written by hand.</small>
 			</li>
 		</ul>
 	</nav>
+
+	<h2>Projects</h2>
+	<ul>
+		<li>
+			<a href="https://1tm.gg">1tm.gg</a>
+			<small>
+				Send onetime messages to your friends, partners and coworkers. 
+				Zero-Trust by design, because the encryption happens in the browser.
+			</small>
+		</li>
+		<li>
+			<a href="https://scorimundi.cc">Scorimundi</a><sup>WIP</sup>
+			<small>
+				Create D&D character sheets that calculate the stats in realtime.
+				Goal of the project, take the pen out of the paper and add some chips.
+			</small>
+		</li>
+	</ul>
 </BaseLayout>
