@@ -1,17 +1,20 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Hiddendomain - The Human side of the Internet.">
+	<h1>Hiddendomain</h1>
+	<p>
+		The small page between the seam. Human made with intent.
+	</p>
+	<p>This page is currently WIP.</p>
+
+	<nav>
+		<h2>Index</h2>
+		<ul>
+			<li>
+				<a href="/blog">Blog</a>
+			</li>
+		</ul>
+	</nav>
+</BaseLayout>

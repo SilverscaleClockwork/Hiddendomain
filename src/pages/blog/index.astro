@@ -1,26 +1,39 @@
 ---
 import { getCollection } from "astro:content"
 import type {BlogPost} from "../../content.config"
+import BaseLayout from "../../layouts/BaseLayout.astro";
 const posts = await getCollection('blog');
-const dateTimeFormat = new Intl.DateTimeFormat('de-DE', {
+const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
   day: '2-digit',
   month: 'long',
   year: 'numeric'
 });
 ---
 
-<h1>
-    Posts
-</h1>
+<BaseLayout>
+	<a href="/">Back</a>
 
-<ul>
-    {
-        posts
-        .filter(post => post.data.status === 'published')
-        .map((post) => (
-            <li>
-                <code>{dateTimeFormat.format(post.data.date_updated)}</code> &mdash; <a href={`/blog/${post.id}`}> <span>{post.data.title}</span></a>
-            </li>
-        ))
-    }
-</ul>
+    <h1>
+        Posts
+    </h1>
+    
+    <ul>
+        {
+            posts
+            .filter(post => post.data.status === 'published')
+            .map((post) => (
+                <li>                    
+                    <span>{dateTimeFormat.format(post.data.date_updated)}</span> 
+                    &mdash; 
+                    <a href={`/blog/${post.id}`}>
+                        <strong>{post.data.title}</strong>
+                    </a>
+                    <br />
+                    <em>
+                        {post.data.content.substring(0, 120)}
+                    </em>
+                </li>
+            ))
+        }
+    </ul>
+</BaseLayout>

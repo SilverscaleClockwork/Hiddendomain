@@ -1,0 +1,23 @@
+---
+import "../styles/sakura-dark.css"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{Astro.props.title}</title>
+    <link rel="preconnect" href="https://unpkg.com">
+</head>
+<body style="display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh; padding: 0;">
+    <main>
+        <slot />
+    </main>
+
+    <footer>
+        <div id="wcb" class="carbonbadge"></div>
+        <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+    </footer>
+</body>
+</html>

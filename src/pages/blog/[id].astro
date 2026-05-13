@@ -1,6 +1,7 @@
 ---
 import { marked } from 'marked';
 import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -11,9 +12,21 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-
+const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit'
+});
 const htmlContent = await marked(post.data.content);
 ---
 
-<h1>{post.data.title}</h1>
-<article set:html={htmlContent} />
+<BaseLayout>
+  <a href="/blog">Back</a>
+  <br />
+  <sub>Written {dateTimeFormat.format(post.data.date_updated)}</sub>
+  
+  <h1>{post.data.title}</h1>
+  <article set:html={htmlContent} />
+</BaseLayout>
