@@ -30,7 +30,7 @@ const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
                     </a>
                     <br />
                     <em>
-                        {post.data.content.substring(0, 120)}
+                        {(post.data.seo_text ?? post.data.content).substring(0, 120)}
                     </em>
                 </li>
             ))
