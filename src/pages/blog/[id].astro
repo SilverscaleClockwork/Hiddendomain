@@ -15,9 +15,7 @@ const { post } = Astro.props;
 const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
   day: '2-digit',
   month: 'long',
-  year: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit'
+  year: 'numeric'
 });
 const htmlContent = await marked(post.data.content);
 ---
