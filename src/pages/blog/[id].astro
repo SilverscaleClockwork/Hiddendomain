@@ -21,7 +21,8 @@ const htmlContent = await marked(post.data.content);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.seo_text || post.data.content}>
-  <small>Written {dateTimeFormat.format(post.data.date_updated ?? post.data.date_created)}</small>
+  <small>Written {dateTimeFormat.format(post.data.date_created)}</small>
+  {post.data.date_updated && <small>Edited {dateTimeFormat.format(post.data.date_updated)}</small>}
   
   <article set:html={htmlContent} />
 </BaseLayout>
