@@ -11,8 +11,6 @@ const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
 ---
 
 <BaseLayout title="Hiddendomain - Blog - Technologies, Games and more" description="Hiddendomain shows blogposts about many topics including technlogies, games and more.">
-	<a href="/">Back</a>
-
     <h1>
         Posts
     </h1>
@@ -28,10 +26,9 @@ const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
                     <a href={`/blog/${post.id}`}>
                         <strong>{post.data.title}</strong>
                     </a>
-                    <br />
-                    <em>
+                    <small>
                         {(post.data.seo_text ?? post.data.content).substring(0, 120)}
-                    </em>
+                    </small>
                 </li>
             ))
         }
