@@ -15,10 +15,11 @@ const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
         Posts
     </h1>
     
-    <ul>
+    <ul style="list-style: none;">
         {
             posts
             .filter(post => post.data.status === 'published')
+            .sort((post_a, post_b) =>  post_b.data.date_created.getTime() - post_a.data.date_created.getTime())
             .map((post) => (
                 <li>                    
                     <span>{dateTimeFormat.format(post.data.date_updated ?? post.data.date_created)}</span> 
