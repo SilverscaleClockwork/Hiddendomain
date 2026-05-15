@@ -13,6 +13,7 @@ export const BlogSchema = z.object({
     date_created: z.coerce.date(),
     date_updated: z.coerce.date().nullable(),
     seo_text: z.string().nullable(),
+    hero_image: z.string().nullable(), // id
   });
 
 export type BlogPost = z.infer<typeof BlogSchema>
@@ -24,7 +25,7 @@ const blog = defineCollection({
   loader: async () => {
     const client = createDirectus(DIRECTUS_URL).with(rest());
     const posts = await client.request(readItems(DIRECTUS_COLLECTION));
-    
+
     // Map Directus fields to Astro's expected format
     return posts.map(post => ({
       id: post.id.toString(),

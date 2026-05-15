@@ -24,5 +24,7 @@ const htmlContent = await marked(post.data.content);
   <small>Written {dateTimeFormat.format(post.data.date_created)}</small>
   {post.data.date_updated && <small>Edited {dateTimeFormat.format(post.data.date_updated)}</small>}
   
+  {post.data.hero_image && <img src={`https://cms.hiddendoma.in/assets/${post.data.hero_image}`}>}
+
   <article set:html={htmlContent} />
 </BaseLayout>
