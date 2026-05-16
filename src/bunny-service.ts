@@ -40,6 +40,8 @@ const BunnyService: BaseImageService = {
         const { src, width, height, format, quality, densities, widths, formats, ...attributes } = options;
         return {
         ...attributes,
+        width,
+        height,
         loading: attributes.loading ?? 'lazy',
         decoding: attributes.decoding ?? 'async',
         };
