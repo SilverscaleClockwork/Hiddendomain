@@ -1,0 +1,9 @@
+img {
+  width: 100%;
+  /* Reserves space based on the width/height attributes you passed */
+  aspect-ratio: attr(width type(integer)) / attr(height type(integer));
+  
+  /* Fallback for older browsers */
+  height: auto; 
+  display: block;
+}

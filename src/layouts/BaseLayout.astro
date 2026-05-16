@@ -19,9 +19,10 @@ const description = Astro.props.description;
 
     <link rel="sitemap" href="https://hiddendoma.in/sitemap-index.xml"/>
 
-    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="preconnect" href={import.meta.env.CDN_URL}>
 
     <meta name="description" content={description} />
+    <slot name="head" />
 </head>
 <body>
     <Navigation />
