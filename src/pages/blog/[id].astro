@@ -2,6 +2,7 @@
 import { marked } from 'marked';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {Image} from 'astro:assets';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -18,13 +19,23 @@ const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
   year: 'numeric'
 });
 const htmlContent = await marked(post.data.content);
+
+const DIRECTUS_URL = import.meta.env.DIRECTUS_URL;
 ---
 
 <BaseLayout title={post.data.title} description={post.data.seo_text || post.data.content}>
   <small>Written {dateTimeFormat.format(post.data.date_created)}</small>
   {post.data.date_updated && <small>Edited {dateTimeFormat.format(post.data.date_updated)}</small>}
   
-  {post.data.hero_image && <img src={`https://cms.hiddendoma.in/assets/${post.data.hero_image}`}>}
+  { post.data.hero_image && 
+    <Image 
+      src={`${DIRECTUS_URL}/assets/${post.data.hero_image}`} 
+      widths={[200, 400, 800]} 
+      sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, 800px"
+      alt="hero image of the post, just read further."
+      inferSize={true}
+    />
+  }
 
   <article set:html={htmlContent} />
 </BaseLayout>
