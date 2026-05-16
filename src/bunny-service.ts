@@ -1,7 +1,7 @@
 import type { ExternalImageService as BaseImageService } from 'astro';
 
 const CMS_URL = import.meta.env.DIRECTUS_URL;
-const CDN_URL = import.meta.env.CMS_URL;
+const CDN_URL = import.meta.env.CDN_URL;
 
 const BunnyService: BaseImageService = {
 

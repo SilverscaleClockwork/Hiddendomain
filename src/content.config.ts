@@ -9,7 +9,6 @@ export const BlogSchema = z.object({
     status: z.string(),
     title: z.string(),
     content: z.string(),
-    // date_updated: z.string().transform((str) => new Date(str)),
     date_created: z.coerce.date(),
     date_updated: z.coerce.date().nullable(),
     seo_text: z.string().nullable(),
