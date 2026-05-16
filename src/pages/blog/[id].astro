@@ -60,8 +60,7 @@ const heroImage = post.data.hero_image ? await getImage({
       alt="hero image of the post, just read further."
       inferSize={true}
       loading="eager"
-      fetchpriority="high"
-      decoding="auto"
+      decoding="sync"
     />
   }
 
