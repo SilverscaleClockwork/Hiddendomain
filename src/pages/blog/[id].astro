@@ -41,6 +41,7 @@ const heroImage = post.data.hero_image ? await getImage({
       <link 
         rel="preload" 
         as="image" 
+        fetchpriority="high"
         href={heroImage.src} 
         imagesrcset={heroImage.srcSet.attribute}
         imagesizes={heroImage.attributes.sizes}
