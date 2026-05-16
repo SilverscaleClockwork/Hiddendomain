@@ -24,24 +24,28 @@ const htmlContent = await marked(post.data.content);
 
 const DIRECTUS_URL = import.meta.env.DIRECTUS_URL;
 
-const heroImage = await getImage({
+const heroImage = post.data.hero_image ? await getImage({
   src:`${DIRECTUS_URL}/assets/${post.data.hero_image}`,
   widths:[200, 400, 800], 
   sizes:"(max-width: 400px) 400px, (max-width: 600px) 600px, 800px",
   inferSize: true
-})
+}) : null;
 ---
 
 <BaseLayout title={post.data.title} description={post.data.seo_text || post.data.content}>
 
+  
   <Fragment slot="head">
-    <link 
-      rel="preload" 
-      as="image" 
-      href={heroImage.src} 
-      imagesrcset={heroImage.srcSet.attribute}
-      imagesizes={heroImage.attributes.sizes}
-    >
+    {
+      heroImage &&
+      <link 
+        rel="preload" 
+        as="image" 
+        href={heroImage.src} 
+        imagesrcset={heroImage.srcSet.attribute}
+        imagesizes={heroImage.attributes.sizes}
+      >
+    }
   </Fragment>
 
   <small>Written {dateTimeFormat.format(post.data.date_created)}</small>
