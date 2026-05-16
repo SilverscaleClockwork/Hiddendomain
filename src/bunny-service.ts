@@ -37,13 +37,14 @@ const BunnyService: BaseImageService = {
     },
 
     getHTMLAttributes(options) {
-        const { src, width, height, format, quality, densities, widths, formats, ...attributes } = options;
+        const { src, width, height,...attributes } = options;
         return {
         ...attributes,
         width,
         height,
         loading: attributes.loading ?? 'lazy',
         decoding: attributes.decoding ?? 'async',
+        style: `aspect-ratio: ${width} / ${height}; object-fit: cover;` + (attributes.style || ''),
         };
     },
 
