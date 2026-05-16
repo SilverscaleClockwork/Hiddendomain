@@ -38,8 +38,12 @@ const BunnyService: BaseImageService = {
 
     getHTMLAttributes(options) {
         const { src, width, height,...attributes } = options;
+
+        const fetchpriority = (attributes as any).fetchpriority || (options as any).fetchpriority;
+
         return {
         ...attributes,
+        fetchpriority: fetchpriority || undefined,
         width,
         height,
         loading: attributes.loading ?? 'lazy',
