@@ -42,13 +42,13 @@ const BunnyService: BaseImageService = {
         const fetchpriority = (attributes as any).fetchpriority || (options as any).fetchpriority;
 
         return {
-        ...attributes,
-        fetchpriority: fetchpriority || undefined,
-        width,
-        height,
-        loading: attributes.loading ?? 'lazy',
-        decoding: attributes.decoding ?? 'async',
-        style: `aspect-ratio: ${width} / ${height}; object-fit: cover;` + (attributes.style || ''),
+            fetchpriority: fetchpriority || undefined,
+            ...attributes,
+            width,
+            height,
+            loading: attributes.loading ?? 'lazy',
+            decoding: attributes.decoding ?? 'async',
+            style: `aspect-ratio: ${width} / ${height}; object-fit: cover;` + (attributes.style || ''),
         };
     },
 
