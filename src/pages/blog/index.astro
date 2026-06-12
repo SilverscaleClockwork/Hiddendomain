@@ -15,21 +15,26 @@ const dateTimeFormat = new Intl.DateTimeFormat('en-UK', {
         Posts
     </h1>
     
-    <ul style="list-style: none;">
+    <ul style="list-style: none;" class="h-feed hfeed">
         {
             posts
             .filter(post => post.data.status === 'published')
             .sort((post_a, post_b) =>  post_b.data.date_created.getTime() - post_a.data.date_created.getTime())
             .map((post) => (
-                <li>                    
-                    <span>{dateTimeFormat.format(post.data.date_updated ?? post.data.date_created)}</span> 
-                    &mdash; 
-                    <a href={`/blog/${post.id}`}>
-                        <strong>{post.data.title}</strong>
-                    </a>
-                    <small>
-                        {(post.data.seo_text ?? post.data.content).substring(0, 120)}
-                    </small>
+                <li>     
+                    <article class="h-entry hentry">
+                        <time 
+                            class="dt-published published" 
+                            datetime={(post.data.date_created).toISOString()}
+                        >{dateTimeFormat.format(post.data.date_created)}</time> 
+                        &mdash; 
+                        <a href={`/blog/${post.id}`} class="u-url" rel="bookmark">
+                            <strong>{post.data.title}</strong>
+                        </a>
+                        <small class="p-summary entry-summary">
+                            {(post.data.seo_text ?? post.data.content).substring(0, 120)}
+                        </small>
+                    </article>               
                 </li>
             ))
         }

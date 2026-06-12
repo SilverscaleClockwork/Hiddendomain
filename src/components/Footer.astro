@@ -1,0 +1,21 @@
+---
+const path = Astro.url.pathname;
+---
+
+<footer style="background: #111; padding: 1rem;">
+    <div class="h-card">
+        <a class="u-url" ref="me" href="https://github.com/SilverscaleClockwork">GitHub</a>
+        {path !== "/impressum" && (
+            <>
+                {" · "}
+                <a href="/impressum">Impressum</a>
+            </>
+        )}
+    </div>
+</footer>
+
+<style>
+    footer {
+        margin-top: auto;
+    }
+</style>
